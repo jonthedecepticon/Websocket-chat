@@ -4,10 +4,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Websocket Chat</title>
     <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" charset="utf-8"></script>
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/master.css">
   </head>
   <body>
-    <h1>hello</h1>
+
+    <div class="panel" id="modal">
+      <h4 style="text-align: center;">Please enter username</h4>
+        <form>
+          <input id="handle" type="text" placeholder="Name" onblur="return checkForName(event)"/>
+        </form>
+      <hr>
+      <div class="actions">
+        <a href="" class="btn-slack disabled" id="sign-in" >
+          Sign in
+        </a>
+      </div>
+    </div>
+
+    <div id="slack-container" style="display:none;">
+      <div id="sidebar">
+        <div id="team-picker">
+          <ul class="teams">
+            <li class="team"></li>
+            <li class="team-add"><span class="add-team">+</span></li>
+          </ul>
+        </div>
+        <div id="team-name">
+          <h1>UtahJS</h1>
+        </div>
+        <div id="username">
+          <div class="status"> </div>
+          <h2 id="uzername"></h2>
+        </div>
+        <ul id="channels">
+          <h4>channels</h4>
+          <li class="channel selected">
+            <p> <i># </i>general</p>
+          </li>
+          <li class="channel unread">
+            <p> <i># </i>react</p>
+          </li>
+          <li class="channel">
+            <p> <i># </i>node</p>
+          </li>
+          <li class="channel">
+            <p> <i># </i>angular</p>
+          </li>
+          <li class="channel">
+            <p> <i># </i>meet-ups</p>
+          </li>
+        </ul>
+        <ul id="direct-messages">
+          <h4>Direct Messages</h4>
+          <li class="direct-message">
+            <div class="status"> </div>
+            <p>slackbot</p>
+          </li>
+          <li class="direct-message">
+            <div class="status"> </div>
+            <p>jonlambson</p>
+          </li>
+          <li class="direct-message">
+            <div class="status inactive"> </div>
+            <p>drewwarrentiy</p>
+          </li>
+          <li class="direct-message">
+            <div class="status"> </div>
+            <p>soolaimon</p>
+          </li>
+          <li class="direct-message">
+            <div class="status"> </div>
+            <p>camkidman</p>
+          </li>
+          <li class="direct-message">
+            <div class="status inactive"></div>
+            <p>garrett</p>
+          </li>
+        </ul>
+      </div>
+      <div id="chat">
+        <div class="header-bar">
+          <h1>#general</h1>
+          <div class="details">
+            <h3 class="members">1,384 members</h3>
+            <h3 class="purpose">To register for this slack group: https://slack.utahjs.com/ - Also, sidebar themes</h3>
+          </div>
+        </div>
+        <div id="chatbox">
+          <ul class="messages">
+            <div id="output">
+              <li class="message">
+                <div class="user-icon"><img src="http://socialmediaweek.org/wp-content/blogs.dir/1/files/slack-pattern-940x492.jpg" style="margin-left: -50px;"/></div>
+                <div class="body">
+                  <div class="username">jonlambson <span class="time-sent">6:49 AM</span></div>
+                  <div class="text"><span class="at-name">@channel</span> Hey guys, welcome to UtahJS</div>
+                </div>
+              </li>
+              <li class="message">
+                <div class="user-icon"><img src="http://socialmediaweek.org/wp-content/blogs.dir/1/files/slack-pattern-940x492.jpg"/></div>
+                <div class="body">
+                  <div class="username">soolaimon <span class="time-sent">6:55 AM</span></div>
+                  <div class="text"><span class="at-name">@jonlambson</span> Hi! </div>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <div class="input-bar">
+          <form id="form">
+            <input id="message" type="text" placeholder="Message #general" onkeypress="return runScript(event)" />
+            <div id="feedback"></div>
+          </form>
+          <button style="display:none;" id="send">send</button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/chat.js" charset="utf-8"></script>
+    <script src="/js/modal.min.js" charset="utf-8"></script>
   </body>
 </html>
