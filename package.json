@@ -1,0 +1,29 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "Simple Websocket chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonthedecepticon/Websocket-chat.git"
+  },
+  "keywords": [
+    "express",
+    "node"
+  ],
+  "author": "jon lambson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonthedecepticon/Websocket-chat/issues"
+  },
+  "homepage": "https://github.com/jonthedecepticon/Websocket-chat#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
+}
